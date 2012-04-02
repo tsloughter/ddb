@@ -339,7 +339,7 @@ request(Target, JSON) ->
     Body = jsx:to_json(JSON),
     Headers = headers(Target, Body),
     Opts = [{'response_format', 'binary'}],
-    F = fun() -> ibrowse:request(?DDB_ENDPOINT, [{'Content-type', ?CONTENT_TYPE} | Headers], 'post', Body, Opts) end,
+    F = fun() -> ibrowse:send_req(?DDB_ENDPOINT, [{'Content-type', ?CONTENT_TYPE} | Headers], 'post', Body, Opts) end,
     ddb_aws:retry(F, ?MAX_RETRIES, fun jsx:to_term/1).
 
 -spec headers(string(), binary()) -> proplists:proplist().
