@@ -12,7 +12,8 @@
                   lager,
                   crypto,
                   ssl,
-                  ibrowse
+                  ibrowse,
+                  mochiweb
                  ]},
   {env, []}
  ]}.
